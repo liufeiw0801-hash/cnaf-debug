@@ -1,9 +1,0 @@
-[build]
-  command = ""
-  publish = "."
-
-# 下面这段会彻底关闭报错的插件
-[[plugins]]
-  package = "@netlify/angular-runtime"
-  [plugins.inputs]
-    enabled = false

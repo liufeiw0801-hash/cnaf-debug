@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  background-color: #000;
+  margin: 0;
+  overflow: hidden;
+  color: #ff3333;
+  font-family: "Microsoft YaHei", sans-serif;
+}
+
+.space-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%);
+  pointer-events: none;
+  z-index: -10;
+}
+
+.ui-panel {
+  position: fixed;
+  z-index: 10;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+.top-left {
+  top: 0;
+  left: 0;
+}
+
+#map-wrapper canvas {
+  filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.3));
+}
+
+.album-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}

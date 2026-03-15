@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>智慧青春·红色航油 - 交互全息系统</title>
+    <!-- 引入远程资源 -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 背景视频 -->
+      <div id="video-bg-container" class="fixed inset-0 -z-20 overflow-hidden bg-black">
+        <video id="inputVideo" autoplay playsinline class="scale-x-[-1] w-full h-full object-cover brightness-[0.4] contrast-[1.1] blur-[2px]"></video>
+      </div>
+      <div class="space-overlay"></div>
+
+      <div class="ui-panel top-left">
+        <h1 class="text-4xl font-black text-red-600 tracking-widest drop-shadow-[0_0_15px_rgba(255,0,0,0.8)]">智慧青春·红色航油</h1>
+        <p class="text-xs tracking-[0.3em] opacity-70 text-red-500">INTELLIGENT YOUTH · RED AVIATION FUEL</p>
+      </div>
+
+      <div class="control-legend fixed bottom-10 left-10 z-10 bg-black/40 backdrop-blur-md p-6 border-l-4 border-red-600">
+        <div class="mb-4 text-[11px] font-bold text-red-500 tracking-widest border-b border-red-900/40 pb-2">全息交互指令</div>
+        <div class="legend-item flex items-center mb-2 text-sm text-red-100/80"><span class="legend-key bg-red-900/40 text-red-400 px-2 py-0.5 rounded mr-3 font-mono text-xs border border-red-500/30">右手张掌</span> <span>放大系统视图</span></div>
+        <div class="legend-item flex items-center mb-2 text-sm text-red-100/80"><span class="legend-key bg-red-900/40 text-red-400 px-2 py-0.5 rounded mr-3 font-mono text-xs border border-red-500/30">右手握拳</span> <span>缩小视图 / 关闭相册</span></div>
+        <div class="legend-item flex items-center mb-2 text-sm text-red-100/80"><span class="legend-key bg-red-900/40 text-red-400 px-2 py-0.5 rounded mr-3 font-mono text-xs border border-red-500/30">左手张掌</span> <span>拖拽平移全息图层</span></div>
+        <div class="legend-item flex items-center text-sm text-red-100/80"><span class="legend-key bg-red-900/40 text-red-400 px-2 py-0.5 rounded mr-3 font-mono text-xs border border-red-500/30">单指悬停</span> <span>触发节点(1.0s)</span></div>
+      </div>
+
+      <div id="gestureStatus" class="gesture-indicator fixed top-10 right-10 z-10 bg-red-900/20 backdrop-blur-sm px-6 py-3 border border-red-500/30 text-red-400 font-mono tracking-widest uppercase text-xs">
+        系统启动中...
+      </div>
+
+      <!-- 地图容器 -->
+      <div id="map-wrapper" class="fixed inset-0 z-0 flex justify-center items-center pointer-events-none">
+        <canvas id="mapCanvas"></canvas>
+      </div>
+
+      <!-- 详情弹窗 (Album) -->
+      <div id="albumOverlay" class="album-overlay fixed inset-0 z-50 bg-black/80 backdrop-blur-xl flex justify-center items-center opacity-0 pointer-events-none transition-opacity duration-500">
+        <div class="album-panel relative w-[80vw] max-w-4xl bg-[#0a0000] border border-red-900/50 p-10 shadow-[0_0_100px_rgba(255,0,0,0.2)]">
+          <div id="closeAlbumBtn" class="close-btn absolute top-5 right-8 text-5xl text-red-600 cursor-pointer hover:text-red-400 transition-colors">&times;</div>
+          <img id="albumImage" src="" alt="建设成果展示" class="w-full h-80 object-cover mb-8 border border-red-900/50" referrerpolicy="no-referrer">
+          <h2 id="cityName" class="text-4xl font-black mb-4 text-white tracking-widest">城市名称</h2>
+          <div class="h-1 w-20 bg-red-600 mb-6"></div>
+          <p class="text-red-100/60 leading-relaxed italic text-lg">正在检索红色航油建设成果数据...</p>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
