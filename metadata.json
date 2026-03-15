@@ -1,0 +1,7 @@
+{
+  "name": "智慧青春·红色航油 - 交互全息系统",
+  "description": "基于手势识别的智慧航油交互全息展示系统，支持缩放、平移及节点交互。",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
